@@ -34,7 +34,6 @@ CREATE TABLE IF NOT EXISTS `EES`.`Solar_Module_Tracking` (
   `Pmp_Tempc_Coeff_%` INT NULL,
   `Year_of_Manufacture` INT NULL,
   `Location/Intended_Project` INT NULL,
-  `Voc` VARCHAR(45) NULL,
   `Irradiance_(W/m2)` INT NULL,
   `Cell_Temp_C` INT NULL,
   `Measured_Pmp_Watts` INT NULL,
@@ -60,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `EES`.`Legacy_data` (
   `Infrared` VARCHAR(45) NULL,
   `Id` INT NULL,
   INDEX `Id_idx` (`Id` ASC),/*had VISIBLE* keyword*/
-  CONSTRAINT `Id`
+  CONSTRAINT `Legacy_Id`
     FOREIGN KEY (`Id`)
     REFERENCES `EES`.`Solar_Module_Tracking` (`Id`)
     ON DELETE NO ACTION
@@ -94,13 +93,13 @@ CREATE TABLE IF NOT EXISTS `EES`.`Defect_Modes` (
   `Snail_Tracks(No_Resid)` INT NULL,
   `Snail_Tracks(Metal_Resid)` INT NULL,
   `Future_Defect_1` INT NULL,
-  `Future_Defect_3` INT NULL,
+  `Future_Defect_2` INT NULL,
   `Future_Defect_3` INT NULL,
   `Infrared` CHAR(1) NULL,
   `Ultraviolet` CHAR(1) NULL,
   `Id` INT NULL,
   INDEX `Id_idx` (`Id` ASC),/*had VISIBLE* keyword*/
-  CONSTRAINT `Id`
+  CONSTRAINT `Defect_Id`
     FOREIGN KEY (`Id`)
     REFERENCES `EES`.`Solar_Module_Tracking` (`Id`)
     ON DELETE NO ACTION
@@ -118,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `EES`.`Final_Disposition` (
   `Recycle` VARCHAR(45) NULL,
   `Id` INT NULL,
   INDEX `Id_idx` (`Id` ASC),/*had VISIBLE* keyword*/
-  CONSTRAINT `Id`
+  CONSTRAINT `Final_Id`
     FOREIGN KEY (`Id`)
     REFERENCES `EES`.`Solar_Module_Tracking` (`Id`)
     ON DELETE NO ACTION
